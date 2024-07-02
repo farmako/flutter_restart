@@ -15,7 +15,6 @@ public class RestartAppPlugin: NSObject, FlutterPlugin {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "restart":
-            let flutterViewController = UIApplication.shared.keyWindow?.rootViewController as? FlutterViewController
             UIApplication.shared.keyWindow?.rootViewController = FlutterViewController(
                 project: nil,
                 nibName: nil,
