@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:restart_app/restart_app.dart';
 
 void main() {
   debugPrint('Flutter!!!');
@@ -22,7 +22,10 @@ class _MyApplicationState extends State<MyApplication> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(const Duration(seconds: 1), (timer) => setState(() => uptime = timer.tick));
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      debugPrint('Tick: ${timer.tick}');
+      setState(() => uptime = timer.tick);
+    });
   }
 
   @override
@@ -44,11 +47,9 @@ class _MyApplicationState extends State<MyApplication> {
             children: [
               Text('Uptime: ${uptime}s'),
               const SizedBox(height: 16.0),
-              OutlinedButton(
-                onPressed: () {
-                  const MethodChannel('in.farmako/restart_app').invokeMethod('restart');
-                },
-                child: const Text('Restart'),
+              const OutlinedButton(
+                onPressed: RestartApp.restart,
+                child: Text('Restart'),
               ),
             ],
           ),
