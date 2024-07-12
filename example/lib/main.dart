@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:restart_app/restart_app.dart';
+import 'package:restart/restart.dart';
 
 void main() {
-  debugPrint('Flutter!!!');
+  debugPrint('main()');
   runApp(const MyApplication());
 }
 
@@ -23,7 +23,6 @@ class _MyApplicationState extends State<MyApplication> {
   void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      debugPrint('Tick: ${timer.tick}');
       setState(() => uptime = timer.tick);
     });
   }
@@ -39,7 +38,7 @@ class _MyApplicationState extends State<MyApplication> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('package:restart_app'),
+          title: const Text('package:restart'),
         ),
         body: Center(
           child: Column(
@@ -47,8 +46,8 @@ class _MyApplicationState extends State<MyApplication> {
             children: [
               Text('Uptime: ${uptime}s'),
               const SizedBox(height: 16.0),
-              const OutlinedButton(
-                onPressed: RestartApp.restart,
+              const ElevatedButton(
+                onPressed: restart,
                 child: Text('Restart'),
               ),
             ],

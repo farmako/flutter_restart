@@ -2,27 +2,27 @@ PODS:
   - Flutter (1.0.0)
   - integration_test (0.0.1):
     - Flutter
-  - restart_app (0.0.1):
+  - restart (1.0.0):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
-  - restart_app (from `.symlinks/plugins/restart_app/ios`)
+  - restart (from `.symlinks/plugins/restart/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
-  restart_app:
-    :path: ".symlinks/plugins/restart_app/ios"
+  restart:
+    :path: ".symlinks/plugins/restart/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   integration_test: ce0a3ffa1de96d1a89ca0ac26fca7ea18a749ef4
-  restart_app: 793118d8550bd43b6e308eafcbbdf4825160f97d
+  restart: b5fe16e6e038f0024b2f3af43768e9d2a1557554
 
-PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+PODFILE CHECKSUM: 7be2f5f74864d463a8ad433546ed1de7e0f29aef
 
 COCOAPODS: 1.15.2

@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-import restart_app
+import restart
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -9,7 +9,7 @@ import restart_app
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         // --------------------------------------------------
-        RestartAppPlugin.generatedPluginRegistrantRegisterCallback = { [weak self] in
+        RestartPlugin.generatedPluginRegistrantRegisterCallback = { [weak self] in
             GeneratedPluginRegistrant.register(with: self!)
         }
         // --------------------------------------------------

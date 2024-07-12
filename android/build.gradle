@@ -1,4 +1,4 @@
-group = "farmako.restart_app"
+group = "app.farmako.restart"
 version = "1.0-SNAPSHOT"
 
 buildscript {
@@ -26,7 +26,7 @@ apply plugin: "kotlin-android"
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace = "farmako.restart_app"
+        namespace = "app.farmako.restart"
     }
 
     compileSdk = 34

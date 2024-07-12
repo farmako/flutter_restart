@@ -1,14 +1,14 @@
 import Flutter
 import UIKit
 
-public class RestartAppPlugin: NSObject, FlutterPlugin {
+public class RestartPlugin: NSObject, FlutterPlugin {
     public static var generatedPluginRegistrantRegisterCallback: () -> Void = {
         NSLog("WARNING: generatedPluginRegistrantRegisterCallback is not assigned by the AppDelegate.")
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "in.farmako/restart_app", binaryMessenger: registrar.messenger())
-        let instance = RestartAppPlugin()
+        let channel = FlutterMethodChannel(name: "in.farmako/restart", binaryMessenger: registrar.messenger())
+        let instance = RestartPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
     
@@ -20,7 +20,7 @@ public class RestartAppPlugin: NSObject, FlutterPlugin {
                 nibName: nil,
                 bundle: nil
             )
-            RestartAppPlugin.generatedPluginRegistrantRegisterCallback()
+            RestartPlugin.generatedPluginRegistrantRegisterCallback()
             result(true)
         default:
             result(FlutterMethodNotImplemented)
