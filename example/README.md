@@ -1,6 +1,6 @@
-# restart_app_example
+# restart_example
 
-Demonstrates how to use the restart_app plugin.
+Demonstrates how to use the restart plugin.
 
 ## Getting Started
 

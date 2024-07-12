@@ -1,11 +1,11 @@
-name: restart_app
-description: "A new Flutter plugin project."
-version: 0.0.1
-homepage:
+name: restart
+description: "A Flutter plugin to restart the application."
+version: 1.0.0
+homepage: https://github.com/farmako/restart
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
-  flutter: '>=3.3.0'
+  sdk: ">=3.4.3 <4.0.0"
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
@@ -35,10 +35,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: farmako.restart_app
-        pluginClass: RestartAppPlugin
+        package: app.farmako.restart
+        pluginClass: RestartPlugin
       ios:
-        pluginClass: RestartAppPlugin
+        pluginClass: RestartPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

@@ -1,3 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="farmako.restart_app">
+  package="app.farmako.restart">
 </manifest>

@@ -1,4 +1,4 @@
-package farmako.restart_app
+package app.farmako.restart
 
 import android.app.Activity
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -12,14 +12,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RestartAppPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
+class RestartPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private val lock = Any()
     private val scope = CoroutineScope(Dispatchers.Main)
     private var channel: MethodChannel? = null
     private var activity: Activity? = null
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "in.farmako/restart_app")
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "in.farmako/restart")
         channel?.setMethodCallHandler(this)
     }
 

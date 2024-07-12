@@ -1,4 +1,4 @@
-package farmako.restart_app_example
+package app.farmako.restart_example
 
 import io.flutter.embedding.android.FlutterActivity
 
