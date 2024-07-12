@@ -15,13 +15,14 @@ public class RestartPlugin: NSObject, FlutterPlugin {
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "restart":
+            let project = FlutterDartProject()
             UIApplication.shared.keyWindow?.rootViewController = FlutterViewController(
-                project: nil,
+                project: project,
                 nibName: nil,
                 bundle: nil
             )
             RestartPlugin.generatedPluginRegistrantRegisterCallback()
-            result(true)
+            result(nil)
         default:
             result(FlutterMethodNotImplemented)
         }
