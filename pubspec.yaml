@@ -1,6 +1,6 @@
 name: restart
-description: "A Flutter plugin to restart the application."
-version: 1.0.0
+description: "A Flutter plugin to restart the application. The plugin works by restarting the Flutter Engine, instead of the underlying native application."
+version: 1.0.0+1
 homepage: https://github.com/farmako/flutter_restart
 repository: https://github.com/farmako/flutter_restart
 
