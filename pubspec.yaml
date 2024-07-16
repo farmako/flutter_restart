@@ -2,9 +2,13 @@ name: restart
 description: "A Flutter plugin to restart the application."
 version: 1.0.0
 homepage: https://github.com/farmako/flutter_restart
+repository: https://github.com/farmako/flutter_restart
+
+topics:
+  - restart
 
 environment:
-  sdk: ">=3.4.3 <4.0.0"
+  sdk: ">=2.17.0 <4.0.0"
   flutter: ">=3.3.0"
 
 dependencies:
