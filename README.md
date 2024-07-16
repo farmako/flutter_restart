@@ -12,16 +12,24 @@ Recreating the `FlutterActivity`.
 
 Creating a new instance of `FlutterViewController` & setting it as root view controller of the `UIApplication`.
 
+## Installation
+
+Add package to the dependencies section of the `pubspec.yaml`:
+
+```yaml
+dependencies:
+  restart: ^1.0.0
+```
+
 ## Documentation
 
 A single method call allows to terminate the Dart VM & restart execution from the entry point.
 
 ```dart
+import 'package:restart/restart.dart';
 
 // 🎉
-
 restart();
-
 ```
 
 ## Setup
