@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:restart/restart.dart';
 
-void main() {
-  debugPrint('main()');
+void main(List<String> args) {
+  debugPrint('main($args)');
   runApp(const MyApplication());
 }
 
@@ -46,9 +46,13 @@ class _MyApplicationState extends State<MyApplication> {
             children: [
               Text('Uptime: ${uptime}s'),
               const SizedBox(height: 16.0),
-              const ElevatedButton(
-                onPressed: restart,
-                child: Text('Restart'),
+              ElevatedButton(
+                onPressed: () {
+                  restart(
+                    args: ['--timestamp', (DateTime.now().toIso8601String())],
+                  );
+                },
+                child: const Text('Restart'),
               ),
             ],
           ),

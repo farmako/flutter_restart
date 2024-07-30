@@ -36,11 +36,22 @@ restart();
 
 ### Android
 
-No changes required.
+Modify the `MainActivity.kt` file in your Flutter project as follows:
+
+```diff
++import android.content.Context
++import app.farmako.restart.RestartPlugin
+ import io.flutter.embedding.android.FlutterActivity
+
+-class MainActivity: FlutterActivity()
++class MainActivity: FlutterActivity() {
++    override fun provideFlutterEngine(context: Context) = RestartPlugin.provideFlutterEngine()
++}
+```
 
 ### iOS
 
-Flutter plugins must be registered again with the newly created Flutter Engine. Modify the `ios/Runner/AppDelegate.swift` file in your Flutter project as follows:
+Modify the `AppDelegate.swift` file in your Flutter project as follows:
 
 ```diff
  import Flutter

@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 
 public class RestartPlugin: NSObject, FlutterPlugin {
-    public static var generatedPluginRegistrantRegisterCallback: () -> Void = {
+    @objc public static var generatedPluginRegistrantRegisterCallback: () -> Void = {
         NSLog("WARNING: generatedPluginRegistrantRegisterCallback is not assigned by the AppDelegate.")
     }
     
@@ -13,11 +13,19 @@ public class RestartPlugin: NSObject, FlutterPlugin {
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        let arguments = call.arguments as? [String:Any]
         switch call.method {
         case "restart":
-            let project = FlutterDartProject()
+            let args = arguments?["args"] as? [String]
+            let engine = FlutterEngine(name: "io.flutter.flutter.app")
+            engine.run(
+                withEntrypoint: nil,
+                libraryURI: nil,
+                initialRoute: nil,
+                entrypointArgs: args
+            )
             UIApplication.shared.keyWindow?.rootViewController = FlutterViewController(
-                project: project,
+                engine: engine,
                 nibName: nil,
                 bundle: nil
             )
