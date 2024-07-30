@@ -2,7 +2,10 @@ package app.farmako.restart
 
 import android.util.Log
 import android.app.Activity
+import android.app.Application
+import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.FlutterJNI
+import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.embedding.engine.loader.FlutterLoader
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -18,19 +21,24 @@ class RestartPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private var activity: Activity? = null
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        application = flutterPluginBinding.applicationContext as Application
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "in.farmako/restart")
         channel?.setMethodCallHandler(this)
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
         if (call.method == "restart") {
-            result.success(restart())
+            val args = call.argument<List<String>?>("args") ?: emptyList()
+            restart(args)
+            result.success(null)
         } else {
             result.notImplemented()
         }
     }
 
-    private fun restart() = synchronized(lock) {
+    private fun restart(args: List<String>) = synchronized(lock) {
+        // Save args for the newly created FlutterEngine instance.
+        dartEntrypointArgs = args
 
         // [FlutterActivity.recreate] is sufficient to restart the underlying Flutter engine.
         // The following logic exists to ensure that Shorebird loads the latest downloaded patch
@@ -72,7 +80,6 @@ class RestartPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         }.onFailure {
             Log.e(TAG, "Unable to initialize the Flutter runtime.", it)
         }
-
         activity?.recreate()
     }
 
@@ -94,5 +101,19 @@ class RestartPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     companion object {
         private const val TAG = "RestartPlugin"
+
+        @JvmStatic
+        var application: Application? = null
+        @JvmStatic
+        var dartEntrypointArgs = emptyList<String>()
+
+        fun provideFlutterEngine(): FlutterEngine? = application?.let {
+            FlutterEngine(it).apply {
+                dartExecutor.executeDartEntrypoint(
+                    DartExecutor.DartEntrypoint.createDefault(),
+                    dartEntrypointArgs
+                )
+            }
+        }
     }
 }
