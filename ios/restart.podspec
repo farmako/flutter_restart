@@ -11,7 +11,7 @@ A Flutter plugin to restart the application.
                        DESC
   s.homepage         = 'https://github.com/farmako/restart'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Farmako Healthcare' => 'tech@farmako.in' }
+  s.author           = { 'Farmako Healthcare' => 'tech@farmako.ai' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
